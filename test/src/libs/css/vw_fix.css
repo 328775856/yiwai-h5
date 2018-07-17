@@ -1,0 +1,25 @@
+/* 实现1px线段 begin*/
+
+.hairlines {
+    position: relative;
+}
+
+.hairlines:after {
+    position: absolute;
+    content: '';
+    top: -50%;
+    bottom: -50%;
+    left: -50%;
+    right: -50%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    border-bottom: 1px solid;
+}
+
+/* 图片显示修复 */
+
+img {
+    content: normal !important;
+}
+
+/*不要在伪元素里面写content内容，否则无法实现兼容*/

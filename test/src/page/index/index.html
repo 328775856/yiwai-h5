@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>
+        测测你的艺术基因
+    </title>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bc296c45485cd366220b14f0407b102";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="./static/js/polyfill.min.js"></script>
+    <script type="text/javascript" src="./static/js/vue.min.js"></script>
+    <!-- <script type="text/javascript" src="./static/js/videoJs.js"></script> -->
+
+    <!-- vw兼容 begin-->
+    <script type="text/javascript" src="./static/js/vw_fix.js"></script>
+    <script>
+        window.onload = function () {
+            window.viewportUnitsBuggyfill.init({
+                hacks: window.viewportUnitsBuggyfillHacks
+            });
+        }
+    </script>
+    <!-- vw兼容 end-->
+</head>
+
+<body class="mw750">
+
+    <div id="app" v-show="isShowApp" v-cloak>
+        <div class="pop" :class="{focus:isFocus,show:isShowPop}">
+            <div class="popImg"></div>
+            <p class="tips">为了更好的体验，请将手机/平板竖起</p>
+        </div>
+
+        <audio id="chooseAudio" ref="chooseAudio" src="https://img.kanhua.yiwaiart.com/h5/test1/bg.mp3" loop preload="auto"></audio>
+        <audio id="rightAudio" ref="rightAudio" src="https://img.kanhua.yiwaiart.com/h5/test1/right.wav" preload="auto"></audio>
+        <audio id="tapAudio" ref="tapAudio" src="https://img.kanhua.yiwaiart.com/h5/test1/click.wav" preload="auto"></audio>
+        <audio id="scanAudio" ref="scanAudio" src="https://img.kanhua.yiwaiart.com/h5/test1/scan.wav" loop preload="auto"></audio>
+        <audio id="scanSuccAudio" ref="scanSuccAudio" src="https://img.kanhua.yiwaiart.com/h5/test1/scanSucc.mp3" preload="auto"></audio>
+
+        <!-- loading begin-->
+        <div id="loading" v-if="isLoading">
+            <div class="loadingInrWrp">
+                <img class="imgLogo" src="./static/imgs/EY_logo.png" alt="">
+
+                <div class="loader1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="progressWrp">{{progress}}%</div>
+                <div class="progressWordsWrp">正在加载中...</div>
+            </div>
+
+        </div>
+
+        <!-- 开始结束视频 begin-->
+        <div id="video" class="videoWrp" v-if="isShowVideo"></div>
+        <!-- 开始结束视频 end-->
+
+        <!-- 欢迎页 begin -->
+        <div id="tapStart" class="gifFillAll" v-show="isShowTap">
+            <div class="gifOutterWrp" ref="gifOutterWrp">
+                <div class="opeWrp">
+                    <div class="words">
+                        <p class="p1">点击</p>
+                        <div class="clickImg">
+                            <div class="btnStart" @click="tapStart"></div>
+                            <img src="https://img.kanhua.yiwaiart.com/h5/test1/EY_btn_star@2x.png" alt="" @click.prevent="">
+                        </div>
+                        <p class="p2">开启你的艺术之旅</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 欢迎页 end-->
+
+        <!-- 题目 begin-->
+        <div :class="'topic'+(index+1)" v-for="(item, index) in  playList" v-if="item.isShowTopic_gif">
+            <div :id="'topic'+(index+1)+'_gif'" :style="{backgroundImage:'url('+item.gif+')'}" class="gifFillAll" ref="calHeightWrp">
+                <transition name="slide-fade">
+                    <div class="btmImg" v-if="item.btmShow">
+                        <img :src="item.q" alt="" class="imgPanel" @click.prevent="" />
+                        <div :class="'choose'+(qIndex+1)" @click.stop="tapChoose(index+1,itemj.text,qIndex)" v-for="(itemj,qIndex) in item.questionList">
+                            <img :src="item.selIcon" alt="" class="iconRight" v-show="itemj.isSel" @click.prevent="" />
+                        </div>
+                    </div>
+            </div>
+            </transition>
+        </div>
+        <!-- 题目 end-->
+
+        <!-- 输入名称 begin -->
+        <div id="nameWrp" v-if="isShowNameWrp">
+
+            <div class="tipsWrp" v-show="isShowTipsWrp">请输入名字</div>
+
+            <img src="https://img.kanhua.yiwaiart.com/h5/test1/EY_bg_name@2x.png" alt="" class="iptImg" @click.prevent="">
+            <input type="text" v-model.trim="name" placeholder="输入名字" @keyup="keyup" maxlength="5" />
+
+            <div class="clickImg">
+                <div class="btnGetResWrp" @click="btnGetRes"></div>
+                <img src="https://img.kanhua.yiwaiart.com/h5/test1/EY_btn_star@2x.png" alt="" @click.prevent="">
+            </div>
+            <p class="p1">点击检测艺术基因</p>
+        </div>
+        <!-- 输入名称 end -->
+
+
+        <!-- 扫描页 begin -->
+        <div id="scanLoopWrp" v-show="isShowScanLoopWrp">
+            <!-- <div id="scanLoopWrp" v-if="isShowScanLoopWrp"> -->
+            <div class="scanPerson" ref="scanPerson">
+                <img :src="scanPerson" :class="{startAni:isStartAni}" alt="" ref="scanPsersonImg" @click.prevent="">
+            </div>
+            <div class="scanBgOutterWrp" ref="scanBgOutterWrp">
+                <img id="scanBgImg" ref="scanBgImg" :src="scanBgImg" alt="" class="scanBgImg" @click.prevent="">
+            </div>
+            <div class="tipsWrp" v-show="netWorkErr">网络错误，请重试</div>
+        </div>
+        <!-- 扫描页 end-->
+
+        <!-- 结果页 begin-->
+        <canvas id="myCanvas"></canvas>
+        <div id="createImg" v-show="isShowResImg" :style="{backgroundColor:resBgColor}">
+            <div class="againWrp" @click="tapAgain">
+                <div class="imgWrp">
+                    <img src="./static/imgs/EY_btn_agin@2x.png" alt="" @click.prevent="">
+                </div>
+                <p>再玩一次</p>
+            </div>
+            <div id="shareOutterWrp" ref="shareOutterWrp">
+                <!-- 长按保存图片 -->
+                <!-- <i :class="{ipx}">长按保存图片</i> -->
+            </div>
+        </div>
+        <!-- 结果页 end-->
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,figure{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img,input { border:0;outline:none;font-size: 100%;}
+ol,ul,li { list-style:none;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+a {text-decoration:none;color:black;}
+.fl { float:left;}
+.fr { float:right;}
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix{zoom: 1; }
+/*-webkit-tap-highlight-color 防止手机段点击时 有个阴影部分*/
+body{ font:28px \5FAE\8F6F\96C5\9ED1,\5B8B\4F53;height:100%;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);}
+body{font-family: "微软雅黑";}
+/*防止横屏字体变大*/
+html{-webkit-text-size-adjust:none;-ms-text-size-adjust:none;-moz--text-size-adjust:none;text-size-adjust:none;}
+/*自定义滚动条时，滚动不会卡顿*/
+*{-webkit-overflow-scrolling: touch;}
+
+/* flex布局 */
+.mui-flex.aic{align-items: center;}
+.mui-flex, .mui-flex *, .mui-flex :after, .mui-flex :before {box-sizing: border-box;}
+.mui-flex{display:-webkit-box!important;display:-webkit-flex!important;display:-ms-flexbox!important;display:flex!important;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.mui-flex>.cell{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;width:0;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%;display:block;padding:0!important;position:relative}.mui-flex>.cell.fixed{-webkit-box-flex:0!important;-webkit-flex:none!important;-ms-flex:none!important;flex:none!important;width:auto}
+
+/*一些常规*/
+/* .input{height:30px;line-height:30px;padding:2px 5px} */
+.tc{text-align:center}
+.tl{text-align:left}
+.tr{text-align:right}
+/* word-wrap */
+.bk{word-wrap:break-word;}
+/*文本超出省略号显示*/
+.txt-ovh{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+/* vue begin */
+[v-cloak] {display: none!important;}
+/* vue end*/
+

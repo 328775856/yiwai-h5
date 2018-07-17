@@ -1,0 +1,225 @@
+body,html,#main{
+  background-color: #000 !important;
+}
+a,img,button,input,textarea,div{-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;}
+
+
+.videoHtml {
+  position: absolute;
+  top: -10000rem;
+  left: 0;
+  z-index: -1;
+}
+#loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: url('https://img.kanhua.yiwaiart.com/picture/login_bg.jpg') no-repeat;
+  background-size: cover;
+}
+#loading .loading {
+  position: absolute;
+  width: 36%;
+  left: 32%;
+  top: 40%;
+}
+#loading .figer {
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  top: 33%;
+}
+/*.loadNum {
+  color: #fff;
+  font-size: 1rem;
+  position: absolute;
+  top: 57%;
+  left: 44%;
+  font-weight: bold;
+}*/
+.loadText {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: .7rem;
+  position: absolute;
+  top: 48%;
+  font-weight: bold;
+}
+#main{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  background: #fff;
+}
+.indexBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  background: #fff;
+}
+
+#video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:100%;
+  z-index: 100;
+  /* background-color: blue; */
+}
+@media all and (orientation : landscape) {
+  #video {
+    position: absolute;
+    top: -70% !important;
+    left:18% !important;
+    width: 500px !important;
+    height:804px !important;
+    z-index: 100 !important;
+    transform: rotateX(0deg)  rotateY(0deg)   rotate(270deg) !important;
+  }
+  #video2{
+    position: absolute;
+    top: -70% !important;
+    left:15% !important;
+    width: 500px !important;
+    height:804px !important;
+    z-index: 100 !important;
+    transform: rotateX(0deg)  rotateY(0deg) rotateZ(270deg) !important;
+  }
+
+
+  #p2{
+    position: absolute;
+    left: 0;
+    top: 5%;
+    width: 100%!important;
+    height: 100%!important;
+    z-index: 1000
+  }
+
+  .share{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:100%!important;
+    height:750px!important;
+    z-index: 10000
+  }
+  .hd{
+    position: absolute;
+    left: 44% !important;
+    top: 56% !important;
+    width: 18px;
+    height: auto;
+    z-index: 105;
+    -webkit-animation:a_opacity 1s linear infinite;
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode:forwards;
+    animation-delay:.5s;-webkit-animation-delay:.5s;
+    transform: rotateX(0deg)  rotateY(0deg) rotateZ(270deg) !important;
+  }
+  .btn {
+    position: absolute;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+  }
+}
+.indexbtn{
+  position: absolute;
+  left: 44%;
+  top: 17%;
+  width: 49%;
+  height: auto;
+  z-index: 1000;
+/*  -webkit-animation:tada  1s linear infinite;
+  animation-fill-mode:forwards;
+  -webkit-animation-fill-mode:forwards;
+  animation-delay:.5s;-webkit-animation-delay:.5s;*/
+}
+.taoDetail .item6p1{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+/*  top: -5%;*/
+  left: 0;
+  z-index: 1000;
+}
+.taoDetail .item6p2 {
+  width: 34%;
+  position: absolute;
+  top: 64%;
+  left: 32%;
+  z-index: 1000;
+  -webkit-animation: 'ripple' 0.8s ease 0s infinite alternate;
+}
+.taoDetail .item6p3 {
+  width: 34%;
+  position: absolute;
+  top: 73%;
+  left: 32%;
+  z-index: 1000;
+  -webkit-animation: 'ripple' 0.8s ease 0s infinite alternate;
+}
+.taoDetail .item6p4 {
+  position: absolute;
+  top: 15%;
+  left: 17%;
+  z-index: 1000;
+}
+.taoDetail .shakeImg {
+  width: 75%;
+}
+.taoDetail .item6p5 {
+  position: absolute;
+  display: inline-block;
+  top: 65%;
+  left: 33.5%;
+  width: 33%;
+  height: 2rem;
+  opacity: 0;
+  z-index: 1001;
+}
+
+@keyframes ripple {
+  0% {
+    width:34%;
+  }
+  100% {
+    width:36%;
+  }
+}
+.taoDetail .item6p6 {
+  width: 31%;
+  height: 2rem;
+  position: absolute;
+  display: inline-block;
+  top: 74%;
+  left: 34.5%;
+  z-index: 1001;
+  opacity: 0;
+}
+.hidden{
+  display: none;
+}
+#result img {
+  width: 100%;
+}
+.shakeAShake{
+  width: 9rem;
+  position: absolute;
+  left: 10%;
+  top: -33%;
+}

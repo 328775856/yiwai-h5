@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>
+        详情页
+    </title>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="allWrp"></div>
+        <div class="customerListWrp">
+            <ul>
+                <li v-for="item in customerList">
+                    {{item.customerName}}
+                </li>
+            </ul>
+        </div>
+        <div class="imgListWrp">
+            <ul class="clearfix">
+                <li class="fl itemWrp" v-for="item in imgList">
+                    <div class="itemInrWrp">
+                        <img class="imgWrp" :src="item" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <button @click="getMore">查看更多</button>
+        <a href="./photo.html">点我跳转</a>
+    </div>
+
+    <script type="text/javascript" src="./static/js/polyfill.min.js"></script>
+    <script type="text/javascript" src="./static/js/vue.min.js"></script>
+
+    <!-- vw兼容 begin-->
+    <script type="text/javascript" src="./static/js/vw_fix.js"></script>
+    <script>
+        window.onload = function () {
+            window.viewportUnitsBuggyfill.init({
+                hacks: window.viewportUnitsBuggyfillHacks
+            });
+        }
+    </script>
+    <!-- vw兼容 end-->
+
+</body>
+
+</html>
